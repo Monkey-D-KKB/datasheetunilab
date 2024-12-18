@@ -1,0 +1,125 @@
+.envirmental_conditions {
+    display: block; /* Align elements horizontally */
+    align-items: center; /* Vertically center elements */
+    gap: 10px; /* Add spacing between elements */
+    margin-bottom: 15px; /* Add spacing below the section */
+}
+
+.envirmental_conditions label {
+    display: inline;
+    width: 40%;
+    padding:5px;
+}
+#headingenvirment{
+    display: block
+    
+    
+}
+
+.envirmental_conditions input {
+    width: 30%; /* Adjust the width as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+
+
+#heading {
+    width: 95%;
+    padding: 8px 15px;
+    background-color: #6e8efb;
+    border: none;
+    border-radius: 4px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out;
+}
+
+label {
+    display: block;
+}
+
+#least_count {
+    width: 40%;
+}
+
+#unit {
+    width: 30%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.least_countunit {
+    padding: 5px;
+}
+
+.least_countunit label {
+    display: inline;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #6e8efb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #5070db;
+    transform: translateY(-2px);
+}
+
+button:focus {
+    outline: 2px solid #6e8efb;
+    background-color: #6e8efb;
+}
+
+@media (max-width: 768px) {
+    input, button {
+        width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
