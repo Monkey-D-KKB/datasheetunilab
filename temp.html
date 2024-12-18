@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- this vvv2 -->
+<!-- this vvv3 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
+
     <script src="script.js" defer></script>
     <script src="auth.js"></script>
 </head>
@@ -19,9 +21,9 @@
 
         <label id="headingenvirment">Envirmental conditions </label>
         <label for="temp">Temprture</label>
-        <input type="text" id="temp" placeholder="temprture" value="24.5">
+        <input type="text" id="temp" placeholder="temprture">
         <label for="humidity">Humidity</label>
-        <input type="text" id="humidity" placeholder="humidity" value="45 RH%">
+        <input type="text" id="humidity" placeholder="humidity">
     </div>
     <div class="UUC_DATA">
         <!-- <label for="filename">Request ID</label>
@@ -45,8 +47,6 @@
         <label for="Sr.No.">Sr.No.</label>
         <input type="text" id="Sr.No." placeholder="Enter the Sr.No. of the UUC">
 
-        
-
         <label for="Range">Range</label>
         <input type="text" id="Range" placeholder="Enter the range of the UUC">
         <div class="least_countunit">
@@ -60,6 +60,7 @@
                 <option value="Pa">Pa</option>
                 <option value="psi ">psi </option>
                 <option value="mmHg">mmHg</option>
+
             </select>
         </div>
     </div>
@@ -89,8 +90,14 @@
     <div>
         <button onclick="addRow()">Add Row</button>
         <button onclick="deleteRow()">Delete Last Row</button>
+        <button onclick="previewTableAsPDF()">preview PDF</button>
+        <div id="pdfPreviewContainer" style="margin-top: 20px;">
+        <!-- The preview iframe will be dynamically added here -->
+        </div>
         <button onclick="saveTableAsPDF()">Save PDF</button>
     </div>
+    
+
 </body>
 
 </html>
