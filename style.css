@@ -83,6 +83,31 @@ label {
     display: inline;
 }
 
+
+#Range {
+    width: 40%;
+}
+
+#Rangeunit {
+    width: 30%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.Range_unit {
+    padding: 5px;
+}
+
+.Range_unit label {
+    display: inline;
+}
+
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     margin: 20px;
