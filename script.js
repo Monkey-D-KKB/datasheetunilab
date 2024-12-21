@@ -1,3 +1,37 @@
+let rowCounts = 1;
+function addRowtemp() {
+    rowCounts++;
+    // Get the table body where rows will be appended
+    const tableBody = document.getElementById("tableBody");
+    
+    // Create the first row (UUC)
+    const row1 = document.createElement("tr");
+    row1.innerHTML = `
+        <td>${rowCounts}</td>
+        <td ><input type="text" id="point${rowCounts}" name="point${rowCounts}" autocomplete="on"></td>
+        <td>UUC</td>
+        <td><input type="text" id="uuc_reading1_row${rowCounts}" name="uuc_reading1_row${rowCounts}}" autocomplete="off"></td>
+        <td><input type="text" id="uuc_reading2_row${rowCounts}" name="uuc_reading2_row${rowCounts}}" autocomplete="off"></td>
+        <td><input type="text" id="uuc_reading3_row${rowCounts}}" name="uuc_reading3_row${rowCounts}" autocomplete="off"></td>
+    `;
+    
+    // Create the second row (MASTER)
+    var row2 = document.createElement("tr");
+    
+    row2.innerHTML = `
+        <td></td>
+        <td></td>
+        <td>MASTER</td>
+        <td><input type="text" id="master_reading1_row${rowCounts}" name="master_reading1_row${rowCounts}}" autocomplete="off"></td>
+        <td><input type="text" id="master_reading2_row${rowCounts}" name="master_reading2_row${rowCounts}}" autocomplete="off"></td>
+        <td><input type="text" id="master_reading3_row${rowCounts}}" name="master_reading3_row${rowCounts}" autocomplete="off"></td>
+    `;
+    
+    // Append the new rows to the table body
+    tableBody.appendChild(row1);
+    tableBody.appendChild(row2);
+}
+
 
 let rowCount = 1;
 // add row code for 3 col
