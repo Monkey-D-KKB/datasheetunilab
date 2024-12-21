@@ -153,5 +153,4 @@ button:focus {
 /* Ensure preview area adapts well to the viewport */
 #pdfPreviewContainer canvas {
     max-width: 100%; /* Ensure canvas doesn’t overflow horizontally */
-    height: auto; /* Maintain aspect ratio */
 }
