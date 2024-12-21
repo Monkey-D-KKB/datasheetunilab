@@ -82,6 +82,7 @@ label {
     display: inline;
 }
 
+
 #Range {
     width: 40%;
 }
@@ -104,6 +105,7 @@ label {
 .Range_unit label {
     display: inline;
 }
+
 
 body {
     font-family: Helvetica, Arial, sans-serif;
