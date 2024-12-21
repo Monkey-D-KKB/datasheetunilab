@@ -63,15 +63,12 @@
         <label for="accuracy">accuracy</label>
         <input type="text" id="accuracy" placeholder="Enter the accuracy of the UUC">
 
-        <label for="Range">Range</label>
-        <input type="text" id="Range" placeholder="Enter the range of the UUC">
-        <div class="least_countunit">
+
+        <div class="Range_unit1">
+            <label for="Range">Range</label>
+            <input type="text" id="Range" placeholder="Enter the range of the UUC">
             
-            <label for="least_count">Least Count</label>
-            <input type="text" id="least_count" placeholder="Enter the least count">
-            
-            <label for="unit_of_least_count">Unit of least count</label>
-            <select id="unit_of_least_count">
+            <select id="unit_of_range">
                 <option value="Kg/cm2">Kg/cm2</option>
                 <option value="bar">bar</option>
                 <option value="mbar">mbar</option>
@@ -89,8 +86,35 @@
                 <option value="FSW">FSW</option>
                 <option value="MSW">MSW</option>
             </select>
+        </div>
+
+        <div class="least_countunit">
+            <label for="least_count">Least Count</label>
+            <input type="text" id="least_count" placeholder="Enter the least count">
+            
+
+            <select id="unit_of_least_count">
+                <option value="Kg/cm2">Kg/cm2</option>
+                <option value="bar">bar</option>
+                <option value="mbar">mbar</option>
+                <option value="Pa">Pa</option>
+                <option value="PSI">PSI(lb/in2)</option>
+                <option value="lb/ft2">lb/ft2</option>
+                <option value="mmHg">mmHg</option>
+                <option value="inHg">inHg</option>
+                <option value="atm">atm</option>
+                <option value="inH2O">inH2O</option>
+                <option value="ftH2O">ftH2O</option>
+                <option value="mH2O">mH2O</option>
+                <option value="cmH2O">cmH2O</option>
+                <option value="mmH2O">mmH2O</option>
+                <option value="FSW">FSW</option>
+                <option value="MSW">MSW</option>
+
+            </select>
             
         </div>
+        
         
         <label for="location">location</label>
         <input type="text" id="location" placeholder="Enter the location of the UUC">
