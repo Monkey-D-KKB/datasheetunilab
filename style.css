@@ -134,3 +134,25 @@ button:focus {
         font-size: 14px;
     }
 }
+
+
+#pdfPreviewContainer {
+    width: auto;
+    max-width: 100%;
+    height: 300px; /* Default height for larger screens */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: auto; /* Add scrolling for smaller screens if needed */
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* Light background for better visibility */
+}
+
+
+/* Ensure preview area adapts well to the viewport */
+#pdfPreviewContainer canvas {
+    max-width: 100%; /* Ensure canvas doesn’t overflow horizontally */
+    height: auto; /* Maintain aspect ratio */
+}
