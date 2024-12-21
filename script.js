@@ -136,7 +136,7 @@ async function previewTableAsPDF() {
     let yOffset = 10; // Vertical offset for PDF content
 
     // Add form data to the PDF
-    const formInputs = document.querySelectorAll(".envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
+    const formInputs = document.querySelectorAll("#filename,.envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
     pdf.text("Datasheet:", 10, yOffset);
     yOffset += 10;
 
