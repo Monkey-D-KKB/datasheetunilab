@@ -79,7 +79,7 @@ label {
 }
 
 .least_countunit label {
-    display: inline;
+    display: block;
 }
 
 
