@@ -33,6 +33,22 @@ function addRowtemp() {
 }
 
 
+function deleteRowtemp() {
+    const tableBody = document.getElementById("tableBody");
+    const rows = tableBody.getElementsByTagName("tr");
+
+    // Check if there are at least two rows to remove (a pair of UUC and MASTER rows)
+    if (rows.length > 2) {
+        // Remove the last two rows
+        tableBody.deleteRow(-1);  // MASTER row
+        tableBody.deleteRow(-1);
+        rowCounts--; // Decrease the row count  
+    } else {
+        alert("Cannot delete all rows!");
+    }
+}
+
+
 let rowCount = 1;
 // add row code for 3 col
     function addRow() {
