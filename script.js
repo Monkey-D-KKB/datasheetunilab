@@ -29,7 +29,7 @@ let rowCount = 1;
 
 // Function to validate required fields
 function validateRequiredFields() {
-    const requiredFields = document.querySelectorAll("#filename,#Nomenclature, #Id\\.No\\., #Make, #least_count, #Range");
+    const requiredFields = document.querySelectorAll(".envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
     for (const field of requiredFields) {
         if (!field.value.trim()) {
             alert(`Please fill in the ${field.previousElementSibling.textContent}`);
@@ -51,7 +51,7 @@ async function saveTableAsPDF() {
     let yOffset = 10; // Vertical offset for PDF content
 
     // Add form data to the PDF
-    const formInputs = document.querySelectorAll(".envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
+    const formInputs = document.querySelectorAll("#filename,.envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
     pdf.text("Datasheet:", 10, yOffset);
     yOffset += 10;
 
