@@ -128,6 +128,7 @@ function clearFormInputs() {
 // preview pdf 
 async function previewTableAsPDF() {
     if (!validateRequiredFields()) return alert("Please fill all required fields!");
+    
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
 
@@ -173,6 +174,7 @@ async function previewTableAsPDF() {
         head: [headers],
         body: data,
     });
+
 
     const pdfBlob = pdf.output("blob");
 
