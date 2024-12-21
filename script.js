@@ -1,7 +1,6 @@
 
-
 let rowCount = 1;
-
+// add row code for 3 col
     function addRow() {
         rowCount++;
         const tableBody = document.getElementById('tableBody');
@@ -14,7 +13,7 @@ let rowCount = 1;
         `;
         tableBody.appendChild(newRow);
     }
-
+// delete row code for 3 col
     function deleteRow() {
         const tableBody = document.getElementById('tableBody');
         if (tableBody.rows.length > 1) {
@@ -41,7 +40,7 @@ function validateRequiredFields() {
 }
 
 
-
+// save the pdf file 
 async function saveTableAsPDF() {
     if (!validateRequiredFields()) return alertmessage();
     
@@ -101,9 +100,8 @@ async function saveTableAsPDF() {
 }
 
 
-/**
- * Clears all input fields and resets the form
- */
+
+// Clears all input fields and resets the form
 function clearFormInputs() {
     // Clear all input fields in the form
     const inputs = document.querySelectorAll("input, select");
@@ -127,7 +125,7 @@ function clearFormInputs() {
 }
 
 
-
+// preview pdf 
 async function previewTableAsPDF() {
     if (!validateRequiredFields()) return alert("Please fill all required fields!");
     const { jsPDF } = window.jspdf;
@@ -136,7 +134,7 @@ async function previewTableAsPDF() {
     let yOffset = 10; // Vertical offset for PDF content
 
     // Add form data to the PDF
-    const formInputs = document.querySelectorAll(".envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
+    const formInputs = document.querySelectorAll("#filename,.envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
     pdf.text("Datasheet:", 10, yOffset);
     yOffset += 10;
 
