@@ -45,6 +45,7 @@
 }
 
 input {
+    margin-bottom: 5px;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -60,7 +61,7 @@ label {
 }
 
 #least_count {
-    width: 40%;
+    width: 60%;
 }
 
 #unit_of_least_count  {
@@ -84,7 +85,7 @@ label {
 
 
 #Range {
-    width: 40%;
+    width: 60%;
 }
 
 #unit_of_range {
@@ -177,4 +178,9 @@ button:focus {
 /* Ensure preview area adapts well to the viewport */
 #pdfPreviewContainer canvas {
     max-width: 100%; /* Ensure canvas doesn’t overflow horizontally */
+}
+
+.adddata input{
+
+    margin: 10px;
 }
