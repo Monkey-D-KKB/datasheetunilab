@@ -45,6 +45,7 @@
 }
 
 input {
+    margin-bottom: 5px;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -60,7 +61,7 @@ label {
 }
 
 #least_count {
-    width: 40%;
+    width: 60%;
 }
 
 #unit_of_least_count  {
@@ -84,7 +85,7 @@ label {
 
 
 #Range {
-    width: 40%;
+    width: 60%;
 }
 
 #unit_of_range {
@@ -118,13 +119,15 @@ table {
     margin-top: 10px;
 }
 
-th, td {
+td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: center;
 }
 
 th {
+    border: 1px solid #ccc;
+    text-align: center;
     background-color: #f4f4f4;
 }
 
@@ -177,4 +180,20 @@ button:focus {
 /* Ensure preview area adapts well to the viewport */
 #pdfPreviewContainer canvas {
     max-width: 100%; /* Ensure canvas doesn’t overflow horizontally */
+}
+
+.adddata input{
+
+    margin: 10px;
+}
+
+.head1 {
+    width: 100%;
+    margin: 0;
+    font-size: auto;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    border: none;
+    text-align: center;
+
 }
