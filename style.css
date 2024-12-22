@@ -119,13 +119,15 @@ table {
     margin-top: 10px;
 }
 
-th, td {
+td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: center;
 }
 
 th {
+    border: 1px solid #ccc;
+    text-align: center;
     background-color: #f4f4f4;
 }
 
@@ -183,4 +185,15 @@ button:focus {
 .adddata input{
 
     margin: 10px;
+}
+
+.head1 {
+    width: 100%;
+    margin: 0;
+    font-size: auto;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    border: none;
+    text-align: center;
+
 }
