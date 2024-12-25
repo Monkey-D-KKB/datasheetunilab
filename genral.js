@@ -1,3 +1,5 @@
+
+
 function validateRequiredFields() {
     const requiredFields = document.querySelectorAll(".envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
     for (const field of requiredFields) {
@@ -9,6 +11,35 @@ function validateRequiredFields() {
     }
     return true;
 }
+
+
+let rowCount = 1;
+// add row code for 3 col
+    function addRow() {
+        rowCount++;
+        const tableBody = document.getElementById('tableBody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${rowCount}</td>
+            <td><input type="text" name="uuc_${rowCount}" autocomplete="off"></td>
+            <td><input type="text" name="master_up_${rowCount}" autocomplete="off"></td>
+            <td><input type="text" name="master_down_${rowCount}" autocomplete="off"></td>
+        `;
+        tableBody.appendChild(newRow);
+    }
+// delete row code for 3 col
+    function deleteRow() {
+        const tableBody = document.getElementById('tableBody');
+        if (tableBody.rows.length > 1) {
+            tableBody.deleteRow(-1);
+            rowCount--;
+        } else {
+            alert("Cannot delete all rows!");
+        }
+    }
+
+
+
 
 //add input elements
 function addInput() {
