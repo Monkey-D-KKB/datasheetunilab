@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC AMPMETER</title>
+    <link rel="icon" type="image/x-icon" href="universal_calibration_services_logo.jpg">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
@@ -68,6 +69,9 @@
             
             <select id="unit_of_range">
                 <option value="ADC">ADC</option>
+                <option value="A">A</option>
+                <option value="mADC">mADc</option>
+                <option value="mA">mA</option>
                 
             </select>
         </div>
@@ -82,10 +86,10 @@
 
             <select id="unit_of_least_count">
                 <option value="ADC">ADC</option>
-                
-
+                <option value="A">A</option>
+                <option value="mADC">mADc</option>
+                <option value="mA">mA</option>
             </select>
-            
         </div>
         
         <label for="location">location</label>
@@ -110,7 +114,7 @@
                     <th>UUC</th>
                     <th>MASTER </th>
                     <th>MASTER </th>
-                    <th>Mean</th>
+                    <th>conversion</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
@@ -119,7 +123,7 @@
                     <td><input type="text" name="uuc_1" autocomplete="off"></td>
                     <td><input type="text" name="master_up_1" autocomplete="off"></td>
                     <td><input type="text" name="master_down_1" autocomplete="off"></td>
-                    <td><input type="text" name="Mean1" autocomplete="off"></td>
+                    <td><input type="text" name="conversion1" autocomplete="off"></td>
                 </tr>
             </tbody>
         </table>

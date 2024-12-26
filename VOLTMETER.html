@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- this vvv1 -->
+<!-- this vvv2 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature</title>
+    <title>VOLTMETER</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="universal_calibration_services_logo.jpg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="universal_calibration_services_logo.jpg">
+
     <script src="script.js" defer></script>
     <script src="auth.js"></script>
 </head>
@@ -17,7 +18,7 @@
 <body>
 
     <h1 id="heading"> <a id href="dashboard.html">Datasheet</a></h1>
-    
+
     <div class="req_id">
         <label for="filename">Request ID</label>
         <input type="text" id="filename" placeholder="leave Blank" >
@@ -38,7 +39,7 @@
         
     </div>
     
-    <div class="UUC_DATA">
+    <div class="UUC_DATA"> 
         <label for="company">company</label>
         <input type="text" id="company" placeholder="Enter the name of the company">
 
@@ -69,10 +70,12 @@
             <input type="text" id="Range" placeholder="Enter the range of the UUC">
             
             <select id="unit_of_range">
-                <option>°C</option>
-                <option >°F</option>
-                <option>K</option>
-               
+                <option value="VDC">VDC</option>
+                <option value="mVDC">mVDC</option>
+                <option value="kVDC">kVDC</option>
+                <option value="VAC">VAC</option>
+                <option value="mVAC">mVAC</option>
+                <option value="kVAC">kVAC</option>
             </select>
         </div>
 
@@ -82,16 +85,15 @@
             
 
             <select id="unit_of_least_count">
-                <option>°C</option>
-                <option >°F</option>
-                <option>K</option>
-
+                <option value="VDC">VDC</option>
+                <option value="mVDC">mVDC</option>
+                <option value="kVDC">kVDC</option>
+                <option value="VAC">VAC</option>
+                <option value="mVAC">mVAC</option>
+                <option value="kVAC">kVAC</option>
             </select>
             
         </div>
-
-        <label for="sensortype">Sensor type</label>
-        <input type="text" id="sensortype" placeholder="Enter the sensor type of the UUC">
         
         
         <label for="location">location</label>
@@ -100,7 +102,7 @@
         <label for="masterused">Master used</label>
         <input type="text" id="masterused" placeholder="Enter the master used of the UUC">
 
-         <label for="calibrationprocedure">calibration procedure</label>
+        <label for="calibrationprocedure">calibration procedure</label>
         <input type="text" id="alibrationprocedure" placeholder="Enter the calibration procedure used for the calibration">
         
         <label for="calibrationby"> calibration by </label>
@@ -113,9 +115,9 @@
             <thead>
                 <tr>
                     <th>Sr.No</th>
-                    <th>MASTER</th>
-                    <th>UUC ↑</th>
-                    <th>UUC ↓</th>
+                    <th>UUC</th>
+                    <th>MASTER ↑</th>
+                    <th>MASTER ↓</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
