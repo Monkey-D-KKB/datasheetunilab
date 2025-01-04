@@ -131,7 +131,7 @@ async function previewTableAsPDF() {
     let yOffsetRight = yOffset;
 
     // Process form inputs (alternate between left and right columns)
-    const formInputs = document.querySelectorAll(".UUC_DATA input, .UUC_DATA select");
+    const formInputs = document.querySelectorAll(".UUC_DATA input, .UUC_DATA select,.adddata input");
     formInputs.forEach((input) => {
         const label = input.previousElementSibling?.textContent || input.name || input.id;
         const value = input.value || "";
