@@ -90,55 +90,153 @@ function validateRequiredFields() {
 }
 
 
-// save the pdf file 
 async function saveTableAsPDF() {
     if (!validateRequiredFields()) return alertmessage();
-    
+
+    // Import and initialize jsPDF
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
 
-    let yOffset = 10; // Vertical offset for PDF content
+    // Initialize offsets for positioning content in the PDF
+    let yOffset = 10; // Vertical offset for the first line
+    const xOffsetLeft = 10; // Horizontal offset for the left column
+    const xOffsetRight = 110; // Horizontal offset for the right column
 
-    // Add form data to the PDF
-    const formInputs = document.querySelectorAll("#filename,.envirmental_conditions input,.UUC_DATA input, .UUC_DATA select");
-    pdf.text("Datasheet:", 10, yOffset);
+    // Add "Datasheet Report" as the main title
+    pdf.setFontSize(16);
+    pdf.text("Datasheet Report", 105, yOffset, { align: "center" });
+    yOffset += 20;
+
+    // Add "Environmental Conditions" as a section title
+    pdf.setFontSize(14);
+    pdf.text("Environmental Conditions", 105, yOffset, { align: "center" });
     yOffset += 10;
 
-    formInputs.forEach(input => {
+    // Process environmental conditions inputs
+    const envoInputs = document.querySelectorAll(".envirmental_conditions input");
+    envoInputs.forEach((input, index) => {
         const label = input.previousElementSibling?.textContent || input.name || input.id;
-        const value = input.value || input.options?.[input.selectedIndex]?.text || "";
-        pdf.text(`${label}: ${value}`, 10, yOffset);
-        yOffset += 10;
+        const value = input.value || "";
+        const text = `${label}: ${value}`;
 
-        // Handle PDF page overflow
+        if (index % 2 === 0) {
+            pdf.text(text, xOffsetLeft, yOffset);
+        } else {
+            pdf.text(text, xOffsetRight, yOffset);
+            yOffset += 10;
+        }
+
         if (yOffset > 280) {
             pdf.addPage();
             yOffset = 10;
         }
     });
 
-    // Add a gap before the table
     yOffset += 10;
 
-    // Collect data for the table
-    const table = document.querySelector("table");
-    const rows = table.querySelectorAll("tr");
+    // Process Dates/UUC Inputs (left aligned)
+    const datesuucInputs = document.querySelectorAll("#filename, .datesuuc input");
+    datesuucInputs.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        pdf.text(`${label}: ${value}`, xOffsetLeft, yOffset);
+        yOffset += 10;
 
-    const headers = Array.from(rows[0].querySelectorAll("th")).map(header => header.textContent.replace("↑", "Up").replace("↓", "Down")); 
-
-    const data = Array.from(rows).slice(1).map(row => {
-        return Array.from(row.querySelectorAll("td")).map(cell => {
-            const input = cell.querySelector("input");
-            return input ? input.value : cell.textContent.trim();
-        });
+        if (yOffset > 280) {
+            pdf.addPage();
+            yOffset = 10;
+        }
     });
 
-    // Add the table using autoTable
+    yOffset += 10;
+
+    // Initialize offsets for form inputs
+    let yOffsetLeft = yOffset;
+    let yOffsetRight = yOffset;
+
+    // Process form inputs (alternate between left and right columns)
+    const formInputs = document.querySelectorAll(".UUC_DATA input, .UUC_DATA select");
+    formInputs.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        const text = `${label}: ${value}`;
+
+        
+        // Special handling for Range and Least Count with their units
+        if (input.id === "Range") {
+            const unitValue = document.getElementById("unit_of_range").value || "";
+            pdf.text(`Range: ${value} ${unitValue}`, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        } else if (input.id === "least_count") {
+            const unitValue = document.getElementById("unit_of_least_count").value || "";
+            pdf.text(`Least Count: ${value} ${unitValue}`, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        } else {
+            // Alternate inputs between left and right columns
+            if (input.classList.contains("left-col") && input.id !== "unit_of_least_count" && input.id !== "unit_of_range") {
+                pdf.text(text, xOffsetLeft, yOffsetLeft);
+                yOffsetLeft += 10;
+            } else if ( input.classList.contains("right-col") && input.id !== "unit_of_least_count" && input.id !== "unit_of_range") {
+                pdf.text(text, xOffsetRight, yOffsetRight);
+                yOffsetRight += 10;
+            }
+        }
+
+        // Handle overflow
+        if (yOffsetLeft > 280 || yOffsetRight > 280) {
+            pdf.addPage();
+            yOffsetLeft = 10;
+            yOffsetRight = 10;
+        }
+    });
+
+    yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
+
+    // Process Master/Procedure/Calibration By inputs
+    const masterProcedureInputs = document.querySelectorAll(".master_procedure_calibrationby input");
+    masterProcedureInputs.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        const text = `${label}: ${value}`;
+
+        if (input.classList.contains("left-col")) {
+            pdf.text(text, xOffsetLeft, yOffsetLeft);
+            yOffsetLeft += 10;
+        } else if (input.classList.contains("right-col")) {
+            pdf.text(text, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        }
+
+        if (yOffsetLeft > 280 || yOffsetRight > 280) {
+            pdf.addPage();
+            yOffsetLeft = 10;
+            yOffsetRight = 10;
+        }
+    });
+
+    yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
+
+    // Add table data
+    const table = document.querySelector("table");
+    const rows = table.querySelectorAll("tr");
+    const headers = Array.from(rows[0].querySelectorAll("th")).map((header) =>
+        header.textContent.trim()
+    );
+
+    const data = Array.from(rows)
+        .slice(1)
+        .map((row) => Array.from(row.querySelectorAll("td")).map((cell) => {
+            const input = cell.querySelector("input");
+            return input ? input.value : cell.textContent.trim();
+        }));
+
     pdf.autoTable({
         startY: yOffset,
         head: [headers],
         body: data,
     });
+
+
 
     // Get the custom filename from the input field
     const filenameInput = document.getElementById("Id.No.").value.trim();
@@ -148,7 +246,6 @@ async function saveTableAsPDF() {
     pdf.save(filename);
     clearFormInputs()
 }
-
 
 
 // Clears all input fields and resets the form
