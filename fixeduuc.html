@@ -21,69 +21,77 @@
 
     <div class="req_id">
         <label for="filename">Request ID</label>
-        <input type="text" id="filename" placeholder="leave Blank" >
+        <input type="text" id="filename" class="left-col" placeholder="leave Blank">
     </div>
-    
+
     <div class="envirmental_conditions">
         <label id="headingenvirment">Environmental Conditions</label>
-    
+
         <div class="condition">
             <label for="temp">Temperature(°C)</label>
-            <input type="text" id="temp" placeholder="Temperature">
+            <input type="text" id="temp" class="left-col" placeholder="Temperature">
         </div>
-    
+
         <div class="condition">
             <label for="humidity">Humidity(RH%)</label>
             <input type="text" id="humidity" placeholder="Humidity">
         </div>
-        
+
     </div>
+
     
-    <div class="UUC_DATA"> 
+    <div class="datesuuc">
         <label for="company">company</label>
-        <input type="text" id="company" placeholder="Enter the name of the company">
+        <input type="text" id="company" class="left-col" placeholder="Enter the name of the company">
 
         <label for="date">calibration date</label>
-        <input type="date" id="date" placeholder="calibration date">
+        <input type="date" id="date" class="left-col" placeholder="calibration date">
 
         <label for="frequency">frequency</label>
-        <input type="text" id="frequency" placeholder="Enter the frequency of the calibration">
+        <input type="text" id="frequency" class="left-col" placeholder="Enter the frequency of the calibration">
+    </div>
+
+    
+    <div class="UUC_DATA"> 
 
         <label for="Nomenclature">Nomenclature</label>
-        <input type="text" id="Nomenclature" placeholder="Enter the name of the UUC">
-
-        <label for="make">make</label>
-        <input type="text" id="make" placeholder="Enter make of the UUC">
+        <input type="text" id="Nomenclature" class="left-col" placeholder="Enter the name of the UUC">
 
         <label for="Id.No.">ID No.</label>
-        <input type="text" id="Id.No." placeholder="Enter the ID No. of the UUC">
+        <input type="text" id="Id.No." class="right-col" placeholder="Enter the ID No. of the UUC">
 
+        <label for="make">make</label>
+        <input type="text" id="make" class="left-col" placeholder="Enter make of the UUC">
+
+        <div class="Range_unit1">
+            <label for="Range">Range</label>
+            <input type="text" id="Range" class="right-col" placeholder="Enter the range of the UUC">
+        </div>
+         <div class="least_countunit">
+            <label for="least_count">Least Count</label>
+            <input type="text" id="least_count" class="right-col" placeholder="Enter the least count">
+            </select>
+        </div>
+ 
         <label for="Sr.No.">Sr.No.</label>
-        <input type="text" id="Sr.No." placeholder="Enter the Sr.No. of the UUC">
+        <input type="text" id="Sr.No." class="left-col" placeholder="Enter the Sr.No. of the UUC">
 
         <label for="accuracy">accuracy</label>
-        <input type="text" id="accuracy" placeholder="Enter the accuracy of the UUC">
+        <input type="text" id="accuracy" class="right-col" placeholder="Enter the accuracy of the UUC">
 
-
-        <label for="Range">Range</label>
-        <input type="text" id="Range" placeholder="Enter the range of the UUC">
-
-
-        <label for="least_count">Least Count</label>
-        <input type="text" id="least_count" placeholder="Enter the least count">
-        
-        
         <label for="location">location</label>
-        <input type="text" id="location" placeholder="Enter the location of the UUC">
+        <input type="text" id="location" class="left-col" placeholder="Enter the location of the UUC">
+</div>
+        <div class="master_procedure_calibrationby">
 
         <label for="masterused">Master used</label>
-        <input type="text" id="masterused" placeholder="Enter the master used of the UUC">
+        <input type="text" id="masterused" class="right-col" placeholder="Enter the master used of the UUC">
 
         <label for="calibrationprocedure">calibration procedure</label>
-        <input type="text" id="alibrationprocedure" placeholder="Enter the calibration procedure used for the calibration">
-        
-        <label for="calibrationby"> calibration by </label>
-        <input type="text" id="calibrationby" placeholder=" calibration by">
+        <input type="text" id="alibrationprocedure" class="right-col" placeholder="Enter the calibration procedure used for the calibration">
+
+        <label for="calibrationby">calibration by </label>
+        <input type="text" id="calibrationby" class="right-col" placeholder=" calibration by">
     </div>
 
     <h2>Input Table</h2>
