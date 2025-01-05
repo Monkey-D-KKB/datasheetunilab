@@ -178,9 +178,8 @@ async function saveTableAsPDF() {
     // Add table data
     const table = document.querySelector("table");
     const rows = table.querySelectorAll("tr");
-    const headers = Array.from(rows[0].querySelectorAll("th")).map((header) =>
-        header.textContent.trim()
-    );
+     const headers = Array.from(rows[0].querySelectorAll("th")).map(header => header.textContent.replace("↑", "Up").replace("↓", "Down"));
+
 
     const data = Array.from(rows)
         .slice(1)
@@ -377,9 +376,8 @@ async function previewTableAsPDF() {
     // Add table data
     const table = document.querySelector("table");
     const rows = table.querySelectorAll("tr");
-    const headers = Array.from(rows[0].querySelectorAll("th")).map((header) =>
-        header.textContent.trim()
-    );
+    const headers = Array.from(rows[0].querySelectorAll("th")).map(header => header.textContent.replace("↑", "Up").replace("↓", "Down"));
+
 
     const data = Array.from(rows)
         .slice(1)
