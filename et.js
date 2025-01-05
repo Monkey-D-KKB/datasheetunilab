@@ -1,14 +1,14 @@
-let rowCounts = 1;
+let rowCount = 1;
 // add row code for 3 col
     function addRow() {
-        rowCounts++;
+        rowCount++;
         const tableBody = document.getElementById('tableBody');
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td>${rowCounts}</td>
-            <td><input type="text" name="uuc_${rowCounts}" autocomplete="off"></td>
-            <td><input type="text" name="master_up_${rowCounts}" autocomplete="off"></td>
-            <td><input type="text" name="master_down_${rowCounts}" autocomplete="off"></td>
+            <td>${rowCount}</td>
+            <td><input type="text" name="uuc_${rowCount}" autocomplete="off"></td>
+            <td><input type="text" name="master_up_${rowCount}" autocomplete="off"></td>
+            <td><input type="text" name="master_down_${rowCount}" autocomplete="off"></td>
         `;
         tableBody.appendChild(newRow);
     }
@@ -17,7 +17,7 @@ let rowCounts = 1;
         const tableBody = document.getElementById('tableBody');
         if (tableBody.rows.length > 1) {
             tableBody.deleteRow(-1);
-            rowCounts--;
+            rowCount--;
         } else {
             alert("Cannot delete all rows!");
         }
