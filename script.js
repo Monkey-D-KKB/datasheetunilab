@@ -97,6 +97,7 @@ function validateRequiredFields() {
 async function previewTableAsPDF() {
     if (!validateRequiredFields()) return alert("Please fill all required fields!");
 
+
     // Import and initialize jsPDF
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
@@ -143,6 +144,7 @@ async function previewTableAsPDF() {
     datesuucInputs.forEach((input) => {
         const label = input.previousElementSibling?.textContent || input.name || input.id;
         const value = input.value || "";
+
         pdf.text(`${label}: ${value}`, xOffsetLeft, yOffset);
         yOffset += 10;
 
@@ -240,11 +242,13 @@ async function previewTableAsPDF() {
         body: data,
     });
 
+
     // Preview PDF
     const pdfBlob = pdf.output("blob");
     const pdfURL = URL.createObjectURL(pdfBlob);
     const pdfjsLib = window["pdfjs-dist/build/pdf"];
     const pdfContainer = document.getElementById("pdfPreviewContainer");
+
 
     pdfjsLib.getDocument(pdfURL).promise.then((pdfDoc) => {
         pdfDoc.getPage(1).then((page) => {
@@ -263,12 +267,14 @@ async function previewTableAsPDF() {
 }
 
 
+
 async function saveTableAsPDF() {
     if (!validateRequiredFields()) return alertmessage();
 
     // Import and initialize jsPDF
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
+
 
     // Initialize offsets for positioning content in the PDF
     let yOffset = 10; // Vertical offset for the first line

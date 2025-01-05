@@ -222,6 +222,7 @@ function validateRequiredFields() {
 }
 
 
+// preview pdf
 
 async function previewTableAsPDF() {
     if (!validateRequiredFields()) return alert("Please fill all required fields!");

@@ -302,6 +302,110 @@ async function saveTableAsPDF() {
     let yOffsetRight = yOffset;
 
     // Process form inputs (alternate between left and right columns)
+    const formInputs = document.querySelectorAll(".UUC_DATA input, .UUC_DATA select");
+    formInputs.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        const text = `${label}: ${value}`;
+
+        
+        // Special handling for Range and Least Count with their units
+        if (input.id === "Range") {
+            const unitValue = document.getElementById("unit_of_range").value || "";
+            pdf.text(`Range: ${value} ${unitValue}`, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        } else if (input.id === "least_count") {
+            const unitValue = document.getElementById("unit_of_least_count").value || "";
+            pdf.text(`Least Count: ${value} ${unitValue}`, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        } else {
+            // Alternate inputs between left and right columns
+            if (input.classList.contains("left-col") && input.id !== "unit_of_least_count" && input.id !== "unit_of_range") {
+                pdf.text(text, xOffsetLeft, yOffsetLeft);
+                yOffsetLeft += 10;
+            } else if ( input.classList.contains("right-col") && input.id !== "unit_of_least_count" && input.id !== "unit_of_range") {
+                pdf.text(text, xOffsetRight, yOffsetRight);
+                yOffsetRight += 10;
+            }
+        }
+
+        // Handle overflow
+        if (yOffsetLeft > 280 || yOffsetRight > 280) {
+            pdf.addPage();
+            yOffsetLeft = 10;
+            yOffsetRight = 10;
+        }
+    });
+
+    yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
+
+    // Process Master/Procedure/Calibration By inputs
+    const masterProcedureInputs = document.querySelectorAll(".master_procedure_calibrationby input");
+    masterProcedureInputs.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        const text = `${label}: ${value}`;
+
+        if (input.classList.contains("left-col")) {
+            pdf.text(text, xOffsetLeft, yOffsetLeft);
+            yOffsetLeft += 10;
+        } else if (input.classList.contains("right-col")) {
+            pdf.text(text, xOffsetRight, yOffsetRight);
+            yOffsetRight += 10;
+        }
+
+        if (yOffsetLeft > 280 || yOffsetRight > 280) {
+            pdf.addPage();
+            yOffsetLeft = 10;
+            yOffsetRight = 10;
+        }
+    });
+
+    yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
+
+    // Add table data
+    const table = document.querySelector("table");
+    const rows = table.querySelectorAll("tr");
+    const headers = Array.from(rows[0].querySelectorAll("th")).map((header) =>
+        header.textContent.trim()
+    );
+
+    const data = Array.from(rows)
+        .slice(1)
+        .map((row) => Array.from(row.querySelectorAll("td")).map((cell) => {
+            const input = cell.querySelector("input");
+            return input ? input.value : cell.textContent.trim();
+        }));
+
+    pdf.autoTable({
+        startY: yOffset,
+        head: [headers],
+        body: data,
+    });
+
+
+
+    // Get the custom filename from the input field
+    const filenameInput = document.getElementById("Id.No.").value.trim();
+    const filename = filenameInput ? `${filenameInput}.pdf` : "data_sheet.pdf";
+
+    // Save the PDF
+    pdf.save(filename);
+    clearFormInputs()
+}
+    
+
+
+    
+
+
+    yOffset += 10;
+
+    // Initialize offsets for form inputs
+    let yOffsetLeft = yOffset;
+    let yOffsetRight = yOffset;
+
+    // Process form inputs (alternate between left and right columns)
     const formInputs = document.querySelectorAll(".UUC_DATA input, .UUC_DATA select,.adddata input");
     formInputs.forEach((input) => {
         const label = input.previousElementSibling?.textContent || input.name || input.id;
