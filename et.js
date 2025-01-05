@@ -221,6 +221,7 @@ function validateRequiredFields() {
     return true;
 }
 
+
 // preview pdf
 
 async function previewTableAsPDF() {
