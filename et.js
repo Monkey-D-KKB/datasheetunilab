@@ -1,3 +1,28 @@
+let rowCounts = 1;
+// add row code for 3 col
+    function addRow() {
+        rowCounts++;
+        const tableBody = document.getElementById('tableBody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${rowCount}</td>
+            <td><input type="text" name="uuc_${rowCounts}" autocomplete="off"></td>
+            <td><input type="text" name="master_up_${rowCounts}" autocomplete="off"></td>
+            <td><input type="text" name="master_down_${rowCounts}" autocomplete="off"></td>
+        `;
+        tableBody.appendChild(newRow);
+    }
+// delete row code for 3 col
+    function deleteRow() {
+        const tableBody = document.getElementById('tableBody');
+        if (tableBody.rows.length > 1) {
+            tableBody.deleteRow(-1);
+            rowCounts--;
+        } else {
+            alert("Cannot delete all rows!");
+        }
+    }
+
 let rowCount = 1;
 
     function addRowAmpmeter() {
