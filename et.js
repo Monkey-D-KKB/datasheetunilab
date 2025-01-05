@@ -5,7 +5,7 @@ let rowCounts = 1;
         const tableBody = document.getElementById('tableBody');
         const newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td>${rowCount}</td>
+            <td>${rowCounts}</td>
             <td><input type="text" name="uuc_${rowCounts}" autocomplete="off"></td>
             <td><input type="text" name="master_up_${rowCounts}" autocomplete="off"></td>
             <td><input type="text" name="master_down_${rowCounts}" autocomplete="off"></td>
