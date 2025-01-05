@@ -23,7 +23,6 @@ let rowCount = 1;
         }
     }
 
-let rowCount = 1;
 
     function addRowAmpmeter() {
         rowCount++;
