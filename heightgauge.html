@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- this vvv2 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>height gauge</title>
+    <link rel="icon" type="image/x-icon" href="universal_calibration_services_logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
+
+    <script src="script.js" defer></script>
+    <script src="auth.js"></script>
+</head>
+
+<body>
+
+        <h1 id="heading"> <a id href="dashboard.html">Datasheet</a></h1>
+
+    <div class="req_id">
+        <label for="filename">Request ID</label>
+        <input type="text" id="filename" class="left-col" placeholder="leave Blank">
+    </div>
+
+    <div class="envirmental_conditions">
+        <label id="headingenvirment">Environmental Conditions</label>
+
+        <div class="condition">
+            <label for="temp">Temperature(°C)</label>
+            <input type="text" id="temp" class="left-col" placeholder="Temperature">
+        </div>
+
+        <div class="condition">
+            <label for="humidity">Humidity(RH%)</label>
+            <input type="text" id="humidity" placeholder="Humidity">
+        </div>
+
+    </div>
+
+    
+    <div class="datesuuc">
+        <label for="company">company</label>
+        <input type="text" id="company" class="left-col" placeholder="Enter the name of the company">
+
+        <label for="date">calibration date</label>
+        <input type="date" id="date" class="left-col" placeholder="calibration date">
+
+        <label for="frequency">frequency</label>
+        <input type="text" id="frequency" class="left-col" placeholder="Enter the frequency of the calibration">
+    </div>
+
+    
+    <div class="UUC_DATA"> 
+
+        <label for="Nomenclature">Nomenclature</label>
+        <input type="text" id="Nomenclature" class="left-col" placeholder="Enter the name of the UUC">
+
+        <label for="Id.No.">ID No.</label>
+        <input type="text" id="Id.No." class="right-col" placeholder="Enter the ID No. of the UUC">
+
+        <label for="make">make</label>
+        <input type="text" id="make" class="left-col" placeholder="Enter make of the UUC">
+
+        <div class="Range_unit1">
+            <label for="Range">Range</label>
+            <input type="text" id="Range" class="right-col" placeholder="Enter the range of the UUC">
+            
+             <select id="unit_of_range">
+                <option value="mm">mm</option>
+                <option value="in">in</option>
+            </select>
+        </div>
+
+        <div class="least_countunit">
+            <label for="least_count">Least Count</label>
+            <input type="text" id="least_count" class="right-col" placeholder="Enter the least count">
+                        
+            <select id="unit_of_least_count">
+                <option value="mm">mm</option>
+                <option value="in">in</option>
+            </select>
+            
+        </div>
+        
+          
+        <label for="Sr.No.">Sr.No.</label>
+        <input type="text" id="Sr.No." class="left-col" placeholder="Enter the Sr.No. of the UUC">
+
+        <label for="accuracy">accuracy</label>
+        <input type="text" id="accuracy" class="right-col" placeholder="Enter the accuracy of the UUC">
+
+
+        <label for="location">location</label>
+        <input type="text" id="location" class="left-col" placeholder="Enter the location of the UUC">
+
+        
+    </div>
+    <div class="master_procedure_calibrationby">
+
+        <label for="masterused">Master used</label>
+        <input type="text" id="masterused" class="right-col" placeholder="Enter the master used of the UUC">
+
+        <label for="calibrationprocedure">calibration procedure</label>
+        <input type="text" id="alibrationprocedure" class="right-col" placeholder="Enter the calibration procedure used for the calibration">
+
+        <label for="calibrationby">calibration by </label>
+        <input type="text" id="calibrationby" class="right-col" placeholder=" calibration by">
+    </div>
+            
+    <h2>Input Table</h2>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Master</th>
+                    <th>UUC</th>
+                    <th>UUC</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" name="uuc_1" autocomplete="off"></td>
+                    <td><input type="text" name="master_up_1" autocomplete="off"></td>
+                    <td><input type="text" name="master_down_1" autocomplete="off"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="deleteRow()">Delete Last Row</button>
+        <button onclick="previewTableAsPDF()">preview PDF</button>
+        <div id="pdfPreviewContainer" style="margin-top: 20px;">
+        <!-- The preview iframe will be dynamically added here -->
+        </div>
+        <button onclick="saveTableAsPDF()">Save PDF</button>
+    </div>
+    
+
+</body>
+
+</html>
