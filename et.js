@@ -175,6 +175,22 @@ async function saveTableAsPDF() {
 
     yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
 
+    const loc = document.querySelectorAll(".location inputs");
+    loc.forEach((input) => {
+        const label = input.previousElementSibling?.textContent || input.name || input.id;
+        const value = input.value || "";
+        pdf.text(`${label}: ${value}`, xOffsetLeft, yOffset);
+        yOffset += 10;
+
+        if (yOffset > 280) {
+            pdf.addPage();
+            yOffset = 10;
+        }
+    });
+
+    yOffset = Math.max(yOffsetLeft, yOffsetRight) + 10;
+
+
     // Add table data
     const table = document.querySelector("table");
     const rows = table.querySelectorAll("tr");
